@@ -1,14 +1,8 @@
 import React from 'react';
-import {Text, View} from 'react-native';
-
-// import { Container } from './styles';
+import Routes from './routes';
 
 const App: React.FC = () => {
-  return (
-    <View>
-      <Text>olaaa</Text>
-    </View>
-  );
+  return <Routes />;
 };
 
 export default App;
