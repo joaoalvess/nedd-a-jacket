@@ -1,13 +1,12 @@
 import React from 'react';
-import {Text, View} from 'react-native';
 
-// import { Container } from './styles';
+import {Container, Title} from './styles';
 
 const Dashboard: React.FC = () => {
   return (
-    <View>
-      <Text>ola mundo</Text>
-    </View>
+    <Container>
+      <Title>Hello World!</Title>
+    </Container>
   );
 };
 
