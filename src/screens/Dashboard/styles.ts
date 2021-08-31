@@ -10,3 +10,5 @@ export const Container = styled.View`
 export const Title = styled.Text`
   font-size: 20px;
 `;
+
+export const Button = styled.Button``;
