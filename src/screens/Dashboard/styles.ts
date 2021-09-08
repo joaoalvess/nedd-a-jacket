@@ -7,8 +7,19 @@ export const Container = styled.View`
   align-items: center;
 `;
 
-export const Title = styled.Text`
-  font-size: 20px;
+export const TempView = styled.View`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-bottom: 15%;
 `;
 
-export const Button = styled.Button``;
+export const ViewText = styled.View`
+  display: flex;
+  position: absolute;
+  top: 7%;
+  left: 7%;
+`;
+
+export const Reload = styled.Button``;
