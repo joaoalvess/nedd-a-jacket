@@ -1,19 +1,13 @@
 import React from 'react';
+import {SimpleText} from '../../interfaces/simpleText';
 
-import {SimpleText} from './styles';
+import {BaseText} from './styles';
 
-interface SimpleText {
-  name: string;
-  size?: string;
-  margin?: string;
-  weight?: string;
-}
-
-const CommonText = (props: SimpleText) => {
+const CommonText = (text: SimpleText) => {
   return (
-    <SimpleText weight={props.weight} margin={props.margin} size={props.size}>
-      {props.name}
-    </SimpleText>
+    <BaseText weight={text.weight} margin={text.margin} size={text.size}>
+      {text.name}
+    </BaseText>
   );
 };
 

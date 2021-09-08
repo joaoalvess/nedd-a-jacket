@@ -3,7 +3,7 @@ import React, {useState, createContext, useContext} from 'react';
 import Geolocation from '@react-native-community/geolocation';
 
 interface GeolocationProvider {
-  getGeolocation: any;
+  getGeolocation: () => Promise<void>;
   currentLatitude: string;
   currentLongitude: string;
   watchId: number;

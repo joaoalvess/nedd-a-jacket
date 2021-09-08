@@ -1,12 +1,8 @@
 import styled from 'styled-components/native';
 
-interface SimpleText {
-  size: string;
-  margin: string;
-  weight: string;
-}
+import {SimpleText} from '../../interfaces/simpleText';
 
-export const SimpleText = styled.Text.attrs((props: SimpleText) => ({
+export const BaseText = styled.Text.attrs((props: SimpleText) => ({
   size: props.size || '18px',
   margin: props.margin || '0',
   weight: props.weight || '400',
