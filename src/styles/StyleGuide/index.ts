@@ -5,6 +5,7 @@ export default {
     smallText: '21px',
     temp: '91px',
     family: 'Roboto',
+    reload: 30,
   },
 
   color: {

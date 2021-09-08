@@ -8,6 +8,7 @@ declare module 'styled-components' {
       smallText: string;
       temp: string;
       family: string;
+      reload: number;
     };
 
     color: {
