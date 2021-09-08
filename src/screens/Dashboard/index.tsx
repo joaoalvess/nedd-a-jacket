@@ -8,7 +8,7 @@ import {ThemeContext} from 'styled-components';
 import Icon from 'react-native-vector-icons/Ionicons';
 import CommonText from '../../components/CommonText';
 import ForecastWeather from '../../components/ForecastWeather';
-import {Container, TempView, ViewText} from './styles';
+import {Container, TempView, ReloadView} from './styles';
 
 const Dashboard: React.FC = () => {
   const {currentLatitude, currentLongitude} = useGeolocation();
@@ -27,7 +27,7 @@ const Dashboard: React.FC = () => {
 
   return (
     <Container>
-      <ViewText>
+      <ReloadView>
         <Icon
           onPress={() => {
             getWeatherByGps(currentLatitude, currentLongitude);
@@ -36,7 +36,7 @@ const Dashboard: React.FC = () => {
           size={font.reload}
           color="black"
         />
-      </ViewText>
+      </ReloadView>
       <CommonText size={font.title} name={weatherByGps?.current?.name} />
       <CommonText
         size={font.smallText}

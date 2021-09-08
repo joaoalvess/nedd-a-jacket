@@ -9,10 +9,8 @@ export const Container = styled.View`
   top: 20%;
 `;
 
-export const Temp = styled.Text``;
-
 export const Views = styled.SafeAreaView`
   display: flex;
-  flex-direction: row;
   flex: 1;
+  flex-direction: row;
 `;

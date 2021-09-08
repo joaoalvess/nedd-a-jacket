@@ -15,11 +15,9 @@ export const TempView = styled.View`
   margin-bottom: 15%;
 `;
 
-export const ViewText = styled.View`
+export const ReloadView = styled.View`
   display: flex;
   position: absolute;
   top: 7%;
   left: 7%;
 `;
-
-export const Reload = styled.Button``;
