@@ -1,9 +1,11 @@
 import React, {useState, createContext, useContext} from 'react';
+import {PermissionsAndroid, Platform} from 'react-native';
 
 import Geolocation from '@react-native-community/geolocation';
 
 interface GeolocationProvider {
   getGeolocation: () => Promise<void>;
+  callGeolocation: () => Promise<void>;
   currentLatitude: string;
   currentLongitude: string;
   watchId: number;
@@ -20,8 +22,35 @@ export const GeolocationProvider: React.FC = ({children}) => {
   const [watchId, setWatchId] = useState<number>(0);
   const [error, setError] = useState<string | null>(null);
 
+  async function callGeolocation() {
+    if (Platform.OS === 'ios') {
+      return getGeolocation();
+    }
+
+    if (PermissionsAndroid.RESULTS.GRANTED === 'granted') {
+      return getGeolocation();
+    }
+
+    const granted = await PermissionsAndroid.request(
+      PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+      {
+        title: 'Permissão de Acesso à Localização',
+        message: 'Este aplicativo precisa acessar sua localização.',
+        buttonNeutral: 'Pergunte-me depois',
+        buttonNegative: 'Cancelar',
+        buttonPositive: 'OK',
+      },
+    );
+
+    if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+      return getGeolocation();
+    } else {
+      return setError('Permissão de Localização negada');
+    }
+  }
+
   async function getGeolocation() {
-    Geolocation.getCurrentPosition(
+    await Geolocation.getCurrentPosition(
       position => {
         const currentLat = JSON.stringify(position.coords.latitude);
         const currentLon = JSON.stringify(position.coords.longitude);
@@ -34,7 +63,7 @@ export const GeolocationProvider: React.FC = ({children}) => {
       resError => {
         setError(resError.message);
       },
-      {enableHighAccuracy: true, maximumAge: 1000},
+      {enableHighAccuracy: true, timeout: 300000, maximumAge: 1000},
     );
 
     const watchID = Geolocation.watchPosition(position => {
@@ -54,6 +83,7 @@ export const GeolocationProvider: React.FC = ({children}) => {
     <GeolocationContext.Provider
       value={{
         getGeolocation,
+        callGeolocation,
         currentLatitude,
         currentLongitude,
         watchId,

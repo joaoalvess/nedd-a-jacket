@@ -7,10 +7,10 @@ import AddLocation from '../screens/AddLocation';
 import {useGeolocation} from '../contexts/geolocation';
 
 const Routes = () => {
-  const {error, getGeolocation} = useGeolocation();
+  const {error, callGeolocation} = useGeolocation();
 
   useEffect(() => {
-    getGeolocation();
+    callGeolocation();
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

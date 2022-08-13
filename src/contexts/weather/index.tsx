@@ -34,6 +34,8 @@ export const WeatherProvider: React.FC = ({children}) => {
           daily: res?.data?.daily,
         };
 
+        console.group('foi');
+
         setWeatherByGps(Location);
       })
       .catch(error => {
